@@ -19,23 +19,26 @@ The Meal Buddy project provides a user-friendly interface for searching and stor
 ## Features
 
 - **Home Page**
-- The home page serves as the main entry point for the application.
-- Users can search for meals using a search bar, which provides real-time suggestions as they type, similar to Google's search suggestions.
-- Search results are displayed on the frontend, updating dynamically as the user types.
+
+  - The home page serves as the main entry point for the application.
+  - Users can search for meals using a search bar, which provides real-time suggestions as they type, similar to Google's search suggestions.
+  - Search results are displayed on the frontend, updating dynamically as the user types.
 
 - **Meal Search Results**
-- Each search result displays a meal along with relevant information such as its name, photo, and instructions.
-- Users can mark a meal as their favorite by clicking the favorite button associated with each search result.
-- Clicking the favorite button adds the meal to the "My favorite meals" list.
+
+  - Each search result displays a meal along with relevant information such as its name, photo, and instructions.
+  - Users can mark a meal as their favorite by clicking the favorite button associated with each search result.
+  - Clicking the favorite button adds the meal to the "My favorite meals" list.
 
 - **Meal Detail Page**
-- Clicking on a specific search result (meal) opens a new page with detailed information about that meal.
-- The meal detail page displays additional information about the meal, including its name, photo, instructions, and link to their youtube videos.
+
+  - Clicking on a specific search result (meal) opens a new page with detailed information about that meal.
+  - The meal detail page displays additional information about the meal, including its name, photo, instructions, and link to their youtube videos.
 
 - **My Favorite Meals Page**
-- The "My favorite meals" page displays a list of all the meals that the user has marked as favorites.
-- Each meal in the list has a "Remove from favorites" button.
-- Clicking the "Remove from favorites" button removes the respective meal from the list.
+  - The "My favorite meals" page displays a list of all the meals that the user has marked as favorites.
+  - Each meal in the list has a "Remove from favorites" button.
+  - Clicking the "Remove from favorites" button removes the respective meal from the list.
 
 ## Technology Used
 
