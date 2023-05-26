@@ -1,7 +1,10 @@
+// Function to display meals on the homepage
 const searchMeals = function displayMeals() {
+	// Fetch meals data from the API
 	fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=p`)
 		.then((res) => res.json())
 		.then((data) => {
+			// Display meals dynamically on the webpage
 			document.getElementById("displayMeals").innerHTML = data.meals
 				.map(
 					(meal) => `
@@ -32,18 +35,23 @@ const searchMeals = function displayMeals() {
 				.join("");
 		});
 };
+
+// Call the searchMeals function to display meals on page load
 searchMeals();
 
+// Check if the favorites list exists in the local storage, if not, create an empty list
 if (localStorage.getItem("favouritesList") == null) {
 	localStorage.setItem("favouritesList", JSON.stringify([]));
 }
 
+// Function to fetch meals from the API
 async function fetchMealsFromApi(url, value) {
 	const response = await fetch(`${url + value}`);
 	const meals = await response.json();
 	return meals;
 }
 
+// Function to display search results based on user input
 function showMeals() {
 	let inputValue = document.getElementById("mySearch").value;
 	let arr = JSON.parse(localStorage.getItem("favouritesList"));
@@ -61,6 +69,7 @@ function showMeals() {
 					}
 				}
 				if (isFav) {
+					// Display the meal as a favorite
 					html += `
             <div class="col">
               <div class="card">
@@ -86,6 +95,7 @@ function showMeals() {
             </div>
           `;
 				} else {
+					// Display the meal as a non-favorite
 					html += `
             <div class="col">
               <div class="card">
@@ -113,6 +123,7 @@ function showMeals() {
 				}
 			});
 		} else {
+			// Display a message when the searched meal is not found
 			html += `
         <div class="mb-4 lead">
             The meal you are looking for is not found.
@@ -123,6 +134,7 @@ function showMeals() {
 	});
 }
 
+// Function to show detailed information about a meal
 async function showMealDetails(id) {
 	let url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
 	let html = "";
@@ -170,11 +182,13 @@ async function showMealDetails(id) {
 	document.getElementById("mealDetailedModal").innerHTML = html;
 }
 
+// Function to show the list of favorite meals
 async function showFavMealList() {
 	let arr = JSON.parse(localStorage.getItem("favouritesList"));
 	let url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
 	let html = "";
 	if (arr.length == 0) {
+		// Display a message when the favorites list is empty
 		html += `
       <div>
         No meal added in your favourites list.
@@ -211,6 +225,7 @@ async function showFavMealList() {
 	document.getElementById("favouritesBody").innerHTML = html;
 }
 
+// Function to add or remove a meal from the favorites list
 function addRemoveToFavList(id) {
 	let arr = JSON.parse(localStorage.getItem("favouritesList"));
 	let contain = false;
@@ -220,10 +235,12 @@ function addRemoveToFavList(id) {
 		}
 	}
 	if (contain) {
+		// Remove the meal from favorites list
 		let number = arr.indexOf(id);
 		arr.splice(number, 1);
 		alert("Meal is removed from your favourites list");
 	} else {
+		// Add the meal to favorites list
 		arr.push(id);
 		alert("Meal added to your favourites list");
 	}
