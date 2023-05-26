@@ -8,29 +8,29 @@ const searchMeals = function displayMeals() {
 			document.getElementById("displayMeals").innerHTML = data.meals
 				.map(
 					(meal) => `
-            <div class="col">
-              <div class="card">
-                <img src="${meal.strMealThumb}" class="card-img-top" alt="meals">
-                <div class="card-body">
-                  <h3 class="card-title">${meal.strMeal}</h3>
-                  <button 
-                    type="button" 
-                    class="btn my-btn"
-                    data-bs-toggle="modal"
-					          data-bs-target="#detailModal" 
-                    onclick="showMealDetails(${meal.idMeal})">
-                      More Details
-                    </button>
-                  <button 
-                    id="main${meal.idMeal}" 
-                    class="btn my-btn" 
-                    onclick="addRemoveToFavList(${meal.idMeal})">
-                      <i class="fa-solid fa-heart"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          `
+					    <div class="col">
+					      <div class="card">
+						<img src="${meal.strMealThumb}" class="card-img-top" alt="meals">
+						<div class="card-body">
+						  <h3 class="card-title">${meal.strMeal}</h3>
+						  <button 
+						    type="button" 
+						    class="btn my-btn"
+						    data-bs-toggle="modal"
+						    data-bs-target="#detailModal" 
+						    onclick="showMealDetails(${meal.idMeal})">
+						      More Details
+						    </button>
+						  <button 
+						    id="main${meal.idMeal}" 
+						    class="btn my-btn" 
+						    onclick="addRemoveToFavList(${meal.idMeal})">
+						      <i class="fa-solid fa-heart"></i>
+						  </button>
+						</div>
+					      </div>
+					    </div>
+          				`
 				)
 				.join("");
 		});
@@ -71,64 +71,64 @@ function showMeals() {
 				if (isFav) {
 					// Display the meal as a favorite
 					html += `
-            <div class="col">
-              <div class="card">
-                <img src="${element.strMealThumb}" class="card-img-top" alt="meals">
-                <div class="card-body">
-                  <h3 class="card-title">${element.strMeal}</h3>
-                  <button 
-                    type="button" 
-                    class="btn my-btn"
-                    data-bs-toggle="modal"
-					          data-bs-target="#detailModal"
-                    onclick="showMealDetails(${element.idMeal})">
-                      More Details
-                    </button>
-                  <button 
-                    id="main${element.idMeal}" 
-                    class="btn my-btn" 
-                    onclick="addRemoveToFavList(${element.idMeal})">
-                      <i class="fa-solid fa-heart"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          `;
+					    <div class="col">
+					      <div class="card">
+						<img src="${element.strMealThumb}" class="card-img-top" alt="meals">
+						<div class="card-body">
+						  <h3 class="card-title">${element.strMeal}</h3>
+						  <button 
+						    type="button" 
+						    class="btn my-btn"
+						    data-bs-toggle="modal"
+										  data-bs-target="#detailModal"
+						    onclick="showMealDetails(${element.idMeal})">
+						      More Details
+						    </button>
+						  <button 
+						    id="main${element.idMeal}" 
+						    class="btn my-btn" 
+						    onclick="addRemoveToFavList(${element.idMeal})">
+						      <i class="fa-solid fa-heart"></i>
+						  </button>
+						</div>
+					      </div>
+					    </div>
+					  `;
 				} else {
 					// Display the meal as a non-favorite
 					html += `
-            <div class="col">
-              <div class="card">
-                <img src="${element.strMealThumb}" class="card-img-top" alt="meals">
-                <div class="card-body">
-                  <h3 class="card-title">${element.strMeal}</h3>
-                  <button 
-                    type="button" 
-                    class="btn my-btn"
-                    data-bs-toggle="modal"
-					          data-bs-target="#detailModal"
-                    onclick="showMealDetails(${element.idMeal})">
-                      More Details
-                  </button>
-                  <button 
-                    id="main${element.idMeal}" 
-                    class="btn my-btn" 
-                    onclick="addRemoveToFavList(${element.idMeal})">
-                      <i class="fa-solid fa-heart"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          `;
+					    <div class="col">
+					      <div class="card">
+						<img src="${element.strMealThumb}" class="card-img-top" alt="meals">
+						<div class="card-body">
+						  <h3 class="card-title">${element.strMeal}</h3>
+						  <button 
+						    type="button" 
+						    class="btn my-btn"
+						    data-bs-toggle="modal"
+										  data-bs-target="#detailModal"
+						    onclick="showMealDetails(${element.idMeal})">
+						      More Details
+						  </button>
+						  <button 
+						    id="main${element.idMeal}" 
+						    class="btn my-btn" 
+						    onclick="addRemoveToFavList(${element.idMeal})">
+						      <i class="fa-solid fa-heart"></i>
+						  </button>
+						</div>
+					      </div>
+					    </div>
+					  `;
 				}
 			});
 		} else {
 			// Display a message when the searched meal is not found
 			html += `
-        <div class="mb-4 lead">
-            The meal you are looking for is not found.
-        </div>
-      `;
+				<div class="mb-4 lead">
+				    The meal you are looking for is not found.
+				</div>
+			      `;
 		}
 		document.getElementById("displayMeals").innerHTML = html;
 	});
@@ -140,44 +140,44 @@ async function showMealDetails(id) {
 	let html = "";
 	await fetchMealsFromApi(url, id).then((data) => {
 		html += `
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalLabel">
-          ${data.meals[0].strMeal}
-        </h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-sm-5 mb-3 mb-sm-0">
-            <div class="card">
-              <img
-                src="${data.meals[0].strMealThumb}"
-                class="card-img-top"
-                alt="meal"
-              />
-            </div>
-          </div>
-          <div class="col-sm-7">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Instructions</h5>
-                <p class="card-text">
-                  ${data.meals[0].strInstructions}
-                </p>
-                <a href="${data.meals[0].strYoutube}" class="btn my-btn"
-                  >Watch Video</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
+		      <div class="modal-header">
+			<h1 class="modal-title fs-5" id="modalLabel">
+			  ${data.meals[0].strMeal}
+			</h1>
+			<button
+			  type="button"
+			  class="btn-close"
+			  data-bs-dismiss="modal"
+			  aria-label="Close"
+			></button>
+		      </div>
+		      <div class="modal-body">
+			<div class="row">
+			  <div class="col-sm-5 mb-3 mb-sm-0">
+			    <div class="card">
+			      <img
+				src="${data.meals[0].strMealThumb}"
+				class="card-img-top"
+				alt="meal"
+			      />
+			    </div>
+			  </div>
+			  <div class="col-sm-7">
+			    <div class="card">
+			      <div class="card-body">
+				<h5 class="card-title">Instructions</h5>
+				<p class="card-text">
+				  ${data.meals[0].strInstructions}
+				</p>
+				<a href="${data.meals[0].strYoutube}" class="btn my-btn"
+				  >Watch Video</a
+				>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		      </div>
+		    `;
 	});
 	document.getElementById("mealDetailedModal").innerHTML = html;
 }
@@ -198,27 +198,27 @@ async function showFavMealList() {
 		for (let index = 0; index < arr.length; index++) {
 			await fetchMealsFromApi(url, arr[index]).then((data) => {
 				html += ` 
-          <div class="card mb-2" style="width: 18rem">
-            <img src="${data.meals[0].strMealThumb}" class="card-img-top" alt="meal" />
-            <div class="card-body">
-              <h5 class="card-title">${data.meals[0].strMeal}</h5>
-              <button 
-                type="button" 
-                class="btn my-btn"
-                data-bs-toggle="modal"
-                data-bs-target="#detailModal"
-                onclick="showMealDetails(${data.meals[0].idMeal})">
-                  More Details
-              </button>
-              <button 
-                id="main${data.meals[0].idMeal}" 
-                class="btn my-btn" 
-                onclick="addRemoveToFavList(${data.meals[0].idMeal})">
-                  <i class="fa-solid fa-heart"></i>
-              </button>
-            </div>
-          </div>
-        `;
+				  <div class="card mb-2" style="width: 18rem">
+				    <img src="${data.meals[0].strMealThumb}" class="card-img-top" alt="meal" />
+				    <div class="card-body">
+				      <h5 class="card-title">${data.meals[0].strMeal}</h5>
+				      <button 
+					type="button" 
+					class="btn my-btn"
+					data-bs-toggle="modal"
+					data-bs-target="#detailModal"
+					onclick="showMealDetails(${data.meals[0].idMeal})">
+					  More Details
+				      </button>
+				      <button 
+					id="main${data.meals[0].idMeal}" 
+					class="btn my-btn" 
+					onclick="addRemoveToFavList(${data.meals[0].idMeal})">
+					  <i class="fa-solid fa-heart"></i>
+				      </button>
+				    </div>
+				  </div>
+				`;
 			});
 		}
 	}
